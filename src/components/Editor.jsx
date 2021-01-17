@@ -5,17 +5,47 @@ import "codemirror/mode/xml/xml";
 import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 import { Controlled as CodeMirror } from "react-codemirror2";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  editor: {
+    minWidth: "300px",
+    flex: 1,
+    // maxWidth: "60vw",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  editorHeader: {
+    width: "100%",
+    height: "50px",
+    background: "#1a1b1f",
+    borderTopLeftRadius: "5px",
+    borderTopRightRadius: "5px",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    fontFamily: `"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`,
+    justifyContent: "center",
+    fontWeight: "bold",
+  },
+  editorWrapper: {
+    flex: 1,
+    overflowY: "hidden",
+  },
+}));
 
 const Editor = ({ title, language, value, onChange }) => {
+  const classes = useStyles();
   const handleChange = (editor, data, value) => {
     onChange(value);
   };
 
   return (
-    <div className="editor">
-      <div className="editor-header">{title}</div>
+    <div className={classes.editor}>
+      <div className={classes.editorHeader}>{title}</div>
       <CodeMirror
-        className="editor-wrapper"
+        className={classes.editorWrapper}
         value={value}
         options={{
           lint: true,
@@ -26,7 +56,6 @@ const Editor = ({ title, language, value, onChange }) => {
           tabSize: 4,
         }}
         onBeforeChange={handleChange}
-        onChange={(editor, data, value) => {}}
       />
     </div>
   );
