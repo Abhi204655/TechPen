@@ -4,6 +4,8 @@ import "codemirror/theme/material.css";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -54,6 +56,13 @@ const Editor = ({ title, language, value, onChange }) => {
           theme: "material",
           lineNumbers: true,
           tabSize: 4,
+          matchBrackets: true,
+          indentUnit: 4,
+          indentWithTabs: true,
+          autoCloseTags: true,
+          autoCloseBrackets: true,
+          matchTags: false,
+          foldGutter: true,
         }}
         onBeforeChange={handleChange}
       />
