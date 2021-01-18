@@ -27,6 +27,21 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     height: "50%",
   },
+  resizeBar: {
+    width: "100%",
+    height: "1em",
+    background: "#1a1b1f",
+    color: "#ffffff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "auto",
+    gap: "2px",
+    "& > p": {
+      margin: "0",
+      padding: "0",
+    },
+  },
 }));
 
 const App = () => {
@@ -93,9 +108,6 @@ const App = () => {
           }}
         >
           <Resizable
-            style={{
-              background: "red",
-            }}
             defaultSize={{
               // width: `${horizontal ? "100vw" : "50vw"}`,
               // // height: "50%",
@@ -147,6 +159,9 @@ const App = () => {
                 language="javascript"
               />
               {/* </ResizePanel> */}
+            </div>
+            <div className={classes.resizeBar}>
+              <p>--</p>
             </div>
           </Resizable>
           <div
